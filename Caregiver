@@ -1,0 +1,24 @@
+import calendar
+from datetime import datetime
+from collections import defaultdict
+
+# Base Class for Caregiver
+class Caregiver:
+    def __init__(self, name, phone, email, pay_rate = 20):
+        self.name = name
+        self.phone = phone
+        self.email = email
+        self.pay_rate = pay_rate
+        self.availability = defaultdict(lambda: 'available')
+
+    def set_availability(self, day, shift, status):
+        if status in ['preferred', 'available', 'unavailable']:
+            self.availability[(day, shift)] = status
+        else: 
+            print("Invalid status. Use 'preferred', 'available', or 'unavailable'.")
+
+    def get_availability(self, day, shift):
+        return self.availability[(day, shift)]
+    
+    def __str__(self):
+        return f"{self.name} | {self.phone} | {self.email}"
