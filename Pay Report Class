@@ -1,0 +1,13 @@
+# Pay Report Class 
+class PayReport:
+    def __init__(self, caregivers):
+        self.caregivers = caregivers
+    def generate_report(self):
+        print("/nWeekly Pay Report:")
+        total_pay = 0
+        for caregiver in self.caregivers:
+            if isinstance(caregiver, PaidCaregiver):
+                pay = caregiver.calculate_weekly_pay()
+                total_pay += pay
+                print(f"{caregiver.name}: ${pay:.2f}")
+            print(f"Total Weekly Pay: ${total_pay:.2f}")
