@@ -1,0 +1,24 @@
+if __name__ == "__main__":
+    # Create caregivers
+    caregiver1 = PaidCaregiver("Rachel", "123-456", "rachelcp@terpmail.umd.edu")
+    caregiver2 = PaidCaregiver("Kayla", "789-012", "kaylak@terpmail.umd.edu")
+    caregiver3 = Caregiver("Amy", "345-678", "amyj@terpmail.umd.edu")
+
+    # Set availability
+    caregiver1.set_availability(1, 'AM', 'preferred')
+    caregiver2.set_availability(1, 'PM', 'available')
+    
+    # Create schedule
+    schedule = Schedule([caregiver1, caregiver2, caregiver3])
+    schedule.assign_shift(1, 'AM', caregiver1.name)
+    schedule.assign_shift(1, 'PM', caregiver2.name)
+    
+    # Display schedule
+    schedule.display_schedule()
+    schedule.generate_schedule(6, 2024)  # Example: June 2024
+    
+    # Add hours and generate pay report
+    caregiver1.add_hours(20)
+    caregiver2.add_hours(15)
+    pay_report = PayReport([caregiver1, caregiver2])
+    pay_report.generate_report()
