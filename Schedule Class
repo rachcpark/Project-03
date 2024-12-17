@@ -1,0 +1,23 @@
+# Schedule Class
+class Schedule:
+    def __init__(self, caregivers):
+        self.caregivers = caregivers
+        self.shifts = {'AM', '7:00AM - 1:00 PM': '1:00PM - 7:00 PM'}
+        self.schedules = defaultdict(lambda: {'AM': None, 'PM': None})
+
+    def assign_shift(self, day, shift, caregiver_name):
+        if shift in self.shifts:
+            self.schedule[day][shift] = caregiver_name
+        else: 
+            print("Innvalid shift. Use 'AM" or 'PM'.)
+
+    def generate_schedule(self, month, year):
+        cal = calendar.HTMLCalendar()
+        html_calendar = cal.formatmonth(year, month)
+        print("generated Monthly Schedule (HTML format):")
+        print(html_calendar)
+
+    def display_schedule(self):
+        print("\nCare Schedule.")
+        for day, shifts in self.schedule.items():
+            print(f"Day {day}: AM:{shifts['AM']}, PM: {shifts['PM']}")
