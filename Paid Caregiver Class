@@ -1,0 +1,11 @@
+# Paid Caregiver Class
+class PaidCaregiver(Caregiver):
+    def __init__(self, name, phone, email, pay_rate = 20):
+        super().__init__(name, phone, email, pay_rate)
+        self.hours_worked = 0
+
+    def add_hours(self, hours):
+        self.hours_worked += hours
+    
+    def calculate_weekly_pay(self):
+        return self.hours_worked * self.pay_rate
